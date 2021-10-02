@@ -1,6 +1,7 @@
 const width = 28
 const grid = document.querySelector(".grid")
 const scoreDisplay = document.getElementById("score")
+let squares = []
 
 
 // 0 - pac-dots
@@ -38,3 +39,25 @@ const layout = [
   1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 ]
+
+function createBoard() {
+  for (let i = 0; i < layout.length; i++) {
+    //create a square
+    const square = document.createElement("div")
+    //put square in grid
+    grid.appendChild(square)
+    //put square in sqaures array
+    squares.push(square)
+
+    if (layout[i] === 0) {
+      squares[i].classList.add('pac-dot')
+    } else if (layout[i] === 1) {
+      squares[i].classList.add('wall')
+    } else if (layout[i] === 3) {
+      squares[i].classList.add('power-pellet')
+    }
+
+  }
+}
+
+createBoard()
