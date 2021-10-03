@@ -61,3 +61,8 @@ function createBoard() {
 }
 
 createBoard()
+
+//starting spot for pacman
+let pacmanCurrentIndex = 500
+
+squares[pacmanCurrentIndex].classList.add("pacman")
