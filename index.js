@@ -133,3 +133,20 @@ function pacDotEaten() {
 
 }
 
+class Ghost {
+  constructor(className, startIndex, speed) {
+    this.className = className
+    this.startIndex = startIndex
+    this.speed = speed
+  }
+}
+
+ghosts = [
+  new Ghost("Frank", 348, 250),
+  new Ghost("Gertrude", 376, 400),
+  new Ghost("Jeb", 351, 300),
+  new Ghost("Hank", 379, 500)
+]
+
+//putting ghosts onto main grid
+ghosts.forEach(ghost => squares[ghost.startIndex].classList.add(ghost.className))
