@@ -64,7 +64,6 @@ createBoard()
 
 //starting spot for pacman
 let pacmanCurrentIndex = 490
-
 squares[pacmanCurrentIndex].classList.add("pacman")
 
 function control(e) {
@@ -80,22 +79,26 @@ function control(e) {
   switch (e.keyCode) {
     case 40:
       console.log('pressed down')
-      if (pacmanCurrentIndex + width < width * width) pacmanCurrentIndex += width
+      if (!squares[pacmanCurrentIndex + width].classList.contains("wall") &&
+        pacmanCurrentIndex + width < width * width) pacmanCurrentIndex += width
       break
 
     case 38:
       console.log('pressed up')
-      if (pacmanCurrentIndex - width >= 0) pacmanCurrentIndex -= width
+      if (!squares[pacmanCurrentIndex - width].classList.contains("wall") &&
+        pacmanCurrentIndex - width >= 0) pacmanCurrentIndex -= width
       break
 
     case 37:
       console.log('pressed left')
-      if (pacmanCurrentIndex % width !== 0) pacmanCurrentIndex -= 1
+      if (!squares[pacmanCurrentIndex - 1].classList.contains("wall") &&
+        pacmanCurrentIndex % width !== 0) pacmanCurrentIndex -= 1
       break
 
     case 39:
       console.log('pressed right')
-      if (pacmanCurrentIndex % width < width - 1) pacmanCurrentIndex += 1
+      if (!squares[pacmanCurrentIndex + 1].classList.contains("wall") &&
+        pacmanCurrentIndex % width < width - 1) pacmanCurrentIndex += 1
       break
 
   }
