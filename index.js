@@ -121,16 +121,32 @@ function control(e) {
   }
   squares[pacmanCurrentIndex].classList.add('pacman')
   pacDotEaten()
+  powerPelletEaten()
 }
 document.addEventListener("keyup", control)
 
 function pacDotEaten() {
-  if (squares[pacmanCurrentIndex].classList.contains("pac-dot")) {
+  if (
+    squares[pacmanCurrentIndex].classList.contains("pac-dot")) {
     squares[pacmanCurrentIndex].classList.remove("pac-dot")
+
     score++
     scoreDisplay.innerHTML = score
   }
 
+}
+
+function powerPelletEaten() {
+  if (squares[pacmanCurrentIndex].classList.contains("power-pellet")) {
+    squares[pacmanCurrentIndex].classList.remove("power-pellet")
+    score += 10
+    ghosts.forEach(ghost => ghost.isScared = true)
+    setTimeout(unScareGhost, 10000)
+  }
+}
+
+function unScareGhost() {
+  ghosts.forEach(ghost => ghost.isScared = false)
 }
 
 class Ghost {
