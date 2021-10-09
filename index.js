@@ -182,7 +182,6 @@ function moveGhost(ghost) {
   console.log(direction)
 
   ghost.timerId = setInterval(function () {
-    //all our code
     //if the next square does NOT contain a wall and does not contain a ghost
     if (
       !squares[ghost.currentIndex + direction].classList.contains('wall') &&
@@ -201,6 +200,16 @@ function moveGhost(ghost) {
     if (ghost.isScared) {
       squares[ghost.currentIndex].classList.add("scared-ghost")
     }
+
+    if (ghost.isScared &&
+      squares[ghost.currentIndex].classList.contains("pacman")) {
+      squares[ghost.currentIndex].classList.remove(ghost.className, "ghost", "scared-ghost")
+      ghost.currentIndex = ghost.startIndex
+      score += 100
+      squares[ghost.currentIndex].classList.add(ghost.className, "ghost")
+
+    }
+
 
   }, ghost.speed)
 
