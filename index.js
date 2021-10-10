@@ -1,6 +1,7 @@
 const width = 28
 const grid = document.querySelector(".grid")
 const scoreDisplay = document.getElementById("score")
+const restart = document.getElementById("reset")
 let squares = []
 let score = 0
 
@@ -122,7 +123,6 @@ function control(e) {
   squares[pacmanCurrentIndex].classList.add('pacman')
   pacDotEaten()
   powerPelletEaten()
-  endGame()
 }
 document.addEventListener("keyup", control)
 
@@ -211,8 +211,10 @@ function moveGhost(ghost) {
 
     }
     checkForGameOver()
+    checkForWin()
 
   }, ghost.speed)
+
 
 
 }
@@ -237,3 +239,12 @@ function checkForGameOver() {
     scoreDisplay.innerHTML = "You Lose =("
   }
 }
+
+function checkForWin() {
+  if (score === 274) {
+    ghosts.forEach(ghost => clearInterval(ghost.timerId))
+    document.removeEventListener("keyup", control)
+    scoreDisplay.innerHTML = "You WIN! Great Job!"
+  }
+}
+
