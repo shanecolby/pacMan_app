@@ -1,7 +1,6 @@
 const width = 28
 const grid = document.querySelector(".grid")
 const scoreDisplay = document.getElementById("score")
-const restart = document.getElementById("reset")
 let squares = []
 let score = 0
 
@@ -214,20 +213,7 @@ function moveGhost(ghost) {
     checkForWin()
 
   }, ghost.speed)
-
-
-
 }
-
-// function endGame() {
-//   if (squares[pacmanCurrentIndex].classList.contains("ghost") &&
-//     squares[ghost.isScared] = false) {
-//     squares[pacmanCurrentIndex].classList.remove("pacman")
-//     squares[ghost.currentIndex].classList.remove("ghost")
-//     score = 0
-
-//   }
-// }
 
 function checkForGameOver() {
   if (
