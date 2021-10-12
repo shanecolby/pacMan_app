@@ -241,4 +241,5 @@ function startGame() {
 
 }
 
+
 startGameBtn.addEventListener("click", startGame)
